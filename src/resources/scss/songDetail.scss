@@ -1,0 +1,26 @@
+$black: #121212;
+$white: #FFFFFF;
+$orange: #FF4700;
+$blue: #4B7CEB;
+
+// Mixins
+@mixin generate-gradient($color) {
+	background: -moz-linear-gradient(top, rgba($color,0) 0%, rgba($color,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba($color,0)), color-stop(100%, rgba($color,1)));
+	background: -webkit-linear-gradient(top, rgba($color,0) 0%, rgba($color,1) 100%);
+	background: -o-linear-gradient(top, rgba($color,0) 0%, rgba($color,1) 100%);
+	background: -ms-linear-gradient(top, rgba($color,0) 0%, rgba($color,1) 100%);
+	background: linear-gradient(to bottom, rgba($color,0) 0%, rgba($color,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4800', endColorstr='#ff4800', GradientType=0 );
+}
+
+
+.player {
+	background: darken($blue, 3);
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0 5px 10px -5px rgba($black, 1);
+	height: 667px;
+	position: relative;
+	width: 375px;
+}

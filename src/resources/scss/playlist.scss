@@ -1,0 +1,16 @@
+$black: #121212;
+$white: #FFFFFF;
+$orange: #FF4700;
+$blue: #1D2D3A;
+$custom:#4B7CEB;
+
+.playlist{
+    background: darken($custom, 3);
+	overflow: scroll;
+	box-shadow: 0 5px 10px -5px rgba($black, 1);
+	height: 80vh;
+	min-width: 434px;
+	max-height: 80vh;
+	position: relative;
+	width: inherit;
+}
