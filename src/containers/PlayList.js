@@ -12,7 +12,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Player from '../components/Player'
 import Loading from '../components/Loading';
-import { getPlayList } from '../services/PlayListService'
+import getPlayList from '../services/PlayListService'
 import '../resources/scss/playlist.scss'
 
 const theme = createMuiTheme({
@@ -20,7 +20,7 @@ const theme = createMuiTheme({
       primary: {
         main: '#58FFC1'
       },
-      secondary: {
+    secondary: {
         main: '#D557FF'
       }
     }
@@ -51,6 +51,7 @@ function PlayListComponent({history}){
         history.push('/detail', JSON.stringify(i))
     }
 
+    
     useEffect(() => {
         async function getPlaylistFromService(){
             setLoading(true)
@@ -69,13 +70,13 @@ function PlayListComponent({history}){
     
        getPlaylistFromService()
       }, [])
-
+    
       return(
         <MuiThemeProvider theme={theme}>
             <div className="playlist">
-                <List component="nav" aria-label="main mailbox folders" >
-                    {playlist.map(i => (
-                        <ListItem button onClick={idPlaying !== +i.upload_id ? playSongHandler(i) : pauseSongHandler}>
+                <List component="nav" aria-label="main mailbox folders" id="music-list" >
+                    {playlist.map((i, index) => (
+                        <ListItem key={index} button onClick={idPlaying !== +i.upload_id ? playSongHandler(i) : pauseSongHandler}>
                         <ListItemIcon>
                     { idPlaying === +i.upload_id && isPlaying ? <PauseIcon color="primary" /> : <PlayArrowIcon color="secondary"/> }
                         </ListItemIcon>
@@ -92,6 +93,7 @@ function PlayListComponent({history}){
         </MuiThemeProvider>
       )
 }
+
 
 
 export default withRouter(PlayListComponent)
